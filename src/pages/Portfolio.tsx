@@ -1,124 +1,124 @@
-import React from "react";
-import { cn } from "@/components/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ShinyText } from "@/components/ui/shiny-text";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import React from 'react';
+import { SparkleNavbar } from '@/components/ui/sparkle-navbar';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { ShinyText } from '@/components/ui/shiny-text';
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Code, Layout, Smartphone, Bot, ShoppingBag } from 'lucide-react';
 
-const projects = [
+interface PortfolioItem {
+  id: string;
+  title: string;
+  description: string;
+  link: string;
+  header?: React.ReactNode;
+  icon?: React.ReactNode;
+}
+
+const portfolioItems: PortfolioItem[] = [
   {
-    title: "Project Alpha",
-    description: "A groundbreaking web application built with cutting-edge technologies.",
-    link: "#",
-    image: "https://via.placeholder.com/300x200?text=Project+Alpha",
+    id: '1',
+    title: 'Project Alpha',
+    description: 'A cutting-edge web application built with React and Node.js.',
+    link: '#',
+    header: (
+      <img
+        src="https://via.placeholder.com/300x200/2D3748/A0AEC0?text=Web+App"
+        alt="Project Alpha"
+        className="object-cover object-center w-full h-full rounded-lg"
+      />
+    ),
+    icon: <Code className="h-4 w-4 text-gray-400" />,
   },
   {
-    title: "Project Beta",
-    description: "An innovative mobile experience designed for seamless user interaction.",
-    link: "#",
-    image: "https://via.placeholder.com/300x200?text=Project+Beta",
+    id: '2',
+    title: 'Design System Beta',
+    description: 'Developed a scalable design system for enterprise applications.',
+    link: '#',
+    header: (
+      <img
+        src="https://via.placeholder.com/300x200/2D3748/A0AEC0?text=Design+System"
+        alt="Design System Beta"
+        className="object-cover object-center w-full h-full rounded-lg"
+      />
+    ),
+    icon: <Layout className="h-4 w-4 text-gray-400" />,
   },
   {
-    title: "Project Gamma",
-    description: "A robust backend system optimizing data processing and API performance.",
-    link: "#",
-    image: "https://via.placeholder.com/300x200?text=Project+Gamma",
+    id: '3',
+    title: 'Mobile App Gamma',
+    description: 'Cross-platform mobile application for productivity.',
+    link: '#',
+    header: (
+      <img
+        src="https://via.placeholder.com/300x200/2D3748/A0AEC0?text=Mobile+App"
+        alt="Mobile App Gamma"
+        className="object-cover object-center w-full h-full rounded-lg"
+      />
+    ),
+    icon: <Smartphone className="h-4 w-4 text-gray-400" />,
   },
   {
-    title: "Project Delta",
-    description: "A creative design system enhancing brand consistency across platforms.",
-    link: "#",
-    image: "https://via.placeholder.com/300x200?text=Project+Delta",
+    id: '4',
+    title: 'AI Chatbot Delta',
+    description: 'An intelligent chatbot integrated with various APIs.',
+    link: '#',
+    header: (
+      <img
+        src="https://via.placeholder.com/300x200/2D3748/A0AEC0?text=AI+Chatbot"
+        alt="AI Chatbot Delta"
+        className="object-cover object-center w-full h-full rounded-lg"
+      />
+    ),
+    icon: <Bot className="h-4 w-4 text-gray-400" />,
+  },
+  {
+    id: '5',
+    title: 'E-commerce Redesign',
+    description: 'Revamped an existing e-commerce platform for better UX.',
+    link: '#',
+    header: (
+      <img
+        src="https://via.placeholder.com/300x200/2D3748/A0AEC0?text=E-commerce"
+        alt="E-commerce Redesign"
+        className="object-cover object-center w-full h-full rounded-lg"
+      />
+    ),
+    icon: <ShoppingBag className="h-4 w-4 text-gray-400" />,
   },
 ];
 
 const Portfolio: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="container mx-auto px-4 py-16 space-y-24">
-        {/* Hero Section */}
-        <section className="text-center space-y-6">
-          <ShinyText text="Hello, I'm [Your Name]" className="text-5xl md:text-7xl font-bold" />
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            A passionate full-stack developer crafting engaging web experiences.
+    <div className="min-h-screen bg-black text-white">
+      <SparkleNavbar />
+      <AuroraBackground>
+        <main className="container mx-auto px-4 py-16 text-center relative z-10">
+          <ShinyText text="My Advanced Portfolio" className="text-5xl md:text-7xl font-bold mb-8" />
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+            Showcasing a collection of my most impactful and innovative projects.
           </p>
-          <div className="flex justify-center gap-4 mt-8">
-            <Button size="lg">View My Work</Button>
-            <Button size="lg" variant="outline">Contact Me</Button>
-          </div>
-        </section>
 
-        {/* About Section */}
-        <section id="about" className="max-w-3xl mx-auto">
-          <Card className="p-8 flex flex-col md:flex-row items-center gap-8 bg-card/50 backdrop-blur-sm">
-            <Avatar className="w-24 h-24 md:w-32 md:h-32">
-              <AvatarImage src="https://github.com/shadcn.png" alt="Your Name" />
-              <AvatarFallback>YN</AvatarFallback>
-            </Avatar>
-            <div className="text-center md:text-left">
-              <CardTitle className="text-3xl mb-2">About Me</CardTitle>
-              <CardDescription className="text-lg leading-relaxed">
-                I specialize in building responsive and performant web applications using modern technologies like React, Next.js, and Node.js. With a keen eye for detail and a passion for problem-solving, I strive to deliver high-quality code and exceptional user experiences.
-              </CardDescription>
-            </div>
-          </Card>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="space-y-12">
-          <h2 className="text-4xl font-bold text-center">My Projects</h2>
           <BentoGrid className="max-w-4xl mx-auto">
-            {projects.map((project, i) => (
+            {portfolioItems.map((item, i) => (
               <BentoGridItem
-                key={i}
-                className={cn(
-                  i === 0 && "md:col-span-2",
-                  "flex flex-col justify-between p-6 bg-card/50 backdrop-blur-sm"
-                )}
-              >
-                <CardHeader className="p-0">
-                  <img src={project.image} alt={project.title} className="rounded-md object-cover h-48 w-full mb-4" />
-                  <CardTitle className="text-2xl font-semibold">{project.title}</CardTitle>
-                  <CardDescription className="mt-2 text-muted-foreground">{project.description}</CardDescription>
-                </CardHeader>
-                <CardFooter className="p-0 mt-4">
-                  <Button variant="link" className="px-0">
-                    Learn More &rarr;
-                  </Button>
-                </CardFooter>
-              </BentoGridItem>
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                header={item.header}
+                className={i === 0 || i === 3 ? "md:col-span-2" : ""}
+                icon={item.icon}
+              />
             ))}
           </BentoGrid>
-        </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-4xl font-bold text-center">Get in Touch</h2>
-          <Card className="p-8 bg-card/50 backdrop-blur-sm">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your Name" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="your@email.com" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Your message..." rows={5} />
-              </div>
-              <Button type="submit" className="w-full">Send Message</Button>
-            </form>
-          </Card>
-        </section>
-      </main>
+          <div className="mt-16">
+            <Button className="px-8 py-4 text-lg" variant="secondary">
+              View All Projects <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </main>
+      </AuroraBackground>
     </div>
   );
 };
